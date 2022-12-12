@@ -1,0 +1,22 @@
+.hola {
+    color: aqua;
+    background-color: green;
+}
+
+.auth_form {
+    width: 60vw;
+    min-width: 300px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 2px;
+}
+
+.inp_bar_label {
+    input {
+        margin: 0;
+        width: 100%;
+        min-height: 2em;
+        color: white;
+        padding: 0 10px;
+    }
+}

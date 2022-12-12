@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './auth.module.scss'
 
 function Login() {
   return (
-    <div className='text-black'>Login</div>
+    <div className={`${styles.hola} text-center`}>Login</div>
   )
 }
 
