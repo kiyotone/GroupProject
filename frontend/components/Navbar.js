@@ -14,36 +14,31 @@ const Navbar=()=> {
     }
     ,
     {
-      name:"NetWork",
+      name:"Login",
       icon:<RxDashboard/>,
-      link:"/Register"
+      link:"/auth/Login"
     }
     ,{
       name:"Register",
       icon:<RxDashboard/>,
-      link:"/Login"
+      link:"/auth/Register"
     }
     ,{
       name:"E-wallet",
       icon:<RxDashboard/>,
-      link:"/e-wallet"
+      link:"https://www.youtube.com/watch?v=j5a0jTc9S10"
     }
     ,
     {
       name:"ProfileManagement",
       icon:<RxDashboard/>,
-      link:"/profile"
+      link:"https://www.youtube.com/watch?v=j5a0jTc9S10"
     }
     ,
     {
       name:"Logout",
       icon:<RxDashboard/>,
-      link:"/logout"
-    },
-    {
-      name:"SignIn",
-      icon:<RxDashboard/>,
-      link:"/SignIn"
+      link:"https://www.youtube.com/watch?v=j5a0jTc9S10"
     }
     
   ]

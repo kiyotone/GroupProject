@@ -5,8 +5,9 @@ function Layout({children}) {
   return (
     <div className="flex">
         <Navbar />
-        {children}
-    
+        <div className='w-full h-full text-black'>
+          {children}
+        </div>
     </div>
   )
 }
