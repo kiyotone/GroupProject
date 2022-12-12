@@ -1,0 +1,81 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.outer-box{
+    width:100vw;
+    height: 100vh;
+
+    /* linear-gradient le gradient dina kam garxa ra to top right vanna le top right tira gradient hunxa */
+    background: linear-gradient(to top right, rgb(253, 204, 204) , rgb(191, 253, 191));
+}
+.inner-box{
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, 0.363);
+    backdrop-filter: blur(2);   /*this will make blur effect in inner box*/
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #21628d;  /* right bottom blur color*/
+}
+
+.signup-header h1{
+    font-size: 2.5rem;
+    color: #212122;
+}
+
+.signup-header p{
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.signup-body {
+    margin: 10px 0;
+}
+
+.signup-body p{
+    margin: 10px 0;
+}
+
+.signup-body p label{
+    display: block;
+    font-weight: bold;
+}
+
+.signup-body p input{
+    width: 100%;
+    padding:10px;
+    border: 2px solid #cccc;
+    font-size: 1rem;
+    margin-top: 4px;
+    border-radius: 6px;
+}
+
+.signup-body p input[type="submit"]{
+    background-color: #3498db;
+    border : none;
+    cursor: pointer;
+    color:white
+}
+
+.signup-body p input[type="submit"]:hover{
+    background-color: #21628d;
+}
+
+.signup-footer p{
+    color:#555;
+    text-align: center;
+}
+
+.signup-footer p a{
+    color:#21628d;
+}
