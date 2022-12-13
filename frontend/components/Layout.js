@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import TopBar from './TopBar'
 
 function Layout({children}) {
+
   return (
     <div className="flex ">
         <Navbar />
