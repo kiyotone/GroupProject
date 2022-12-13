@@ -1,6 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Register() {
+
+function Register() 
+{
+
+const [username,setUsername] = useState("");
+const [password,setPassword] = useState("");
+
+const handleRegister = () =>{
+
+      const data = {
+        "username":username,
+        "password":password
+      }  
+
+      fetch('http://127.0.0.1:8000/auth/register',{
+        method:'POST',
+        headers:{
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(data)
+      })
+
+}
+
+
+
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <form className='w-96 p-6 shadow-lg rounded-md bg-white'>
@@ -10,15 +35,18 @@ function Register() {
         <hr className='mt-3'></hr>
         <div className='mt-3'>
           <label for='username' className='block text-base mb-2'>Username</label>
-          <input type='text' id='username' className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Username'></input>
+          <input type='text' id='username' onChange={(e)=>setUsername(e.target.value)} className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Username'></input>
         </div>
         <div className='mt-3'>
           <label for='password' className='block text-base mb-2'>Password</label>
-          <input type='password' id='password' className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Password'></input>
+          <input type='password' id='password' onChange={(e)=>setPassword(e.target.value)} className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Password'></input>
         </div>
         <div className='mt-3'>
           <label for='passwordConfirmation' className='block text-base mb-2'>Password Confirmation</label>
           <input type='password' id='passwordConfirmation' className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Password Again'></input>
+        </div>
+        <div className='mt-3 h-10 flex justify-center w-full items-center'>
+        <button className='mt-3 rounded-full w-40 h-10 bg-[#734bf9] mb-2' value="Register" onClick={handleRegister}>Register</button>
         </div>
       </form>
     </div>
