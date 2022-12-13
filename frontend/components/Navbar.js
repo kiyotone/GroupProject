@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { use } from 'react'
 import logo from '../assets/logo.png'
 import Image from 'next/image'
 import {RxDashboard} from 'react-icons/rx'
 import NavContents from './NavContents'
 import  Link  from 'next/link'
+import {useRouter} from 'next/router'
 
 const Navbar=()=> {
+  const router = useRouter();
   const buttons = [
     {
       name:"Dashboard",
@@ -26,7 +28,7 @@ const Navbar=()=> {
     ,{
       name:"E-wallet",
       icon:<RxDashboard/>,
-      link:"/"
+      link:"/wallet"
     }
     ,
     {
@@ -57,9 +59,7 @@ const Navbar=()=> {
               
               buttons.map((element)=>
               (
-                <Link key={element.name} href={element.link}>
-              <NavContents name={element.name} icon ={element.icon} />
-              </Link>
+                <NavContents name={element.name} icon ={element.icon} link={element.link} router={router}/>
               )
               )
             

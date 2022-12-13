@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Regster() {
+function Register() {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <form className='w-96 p-6 shadow-lg rounded-md bg-white'>
@@ -25,7 +25,7 @@ function Regster() {
   )
 }
 
-export default Regster
+export default Register
 
 
 Register.getLayout = function PageLayout(page){
