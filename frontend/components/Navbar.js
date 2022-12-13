@@ -26,7 +26,7 @@ const Navbar=()=> {
     ,{
       name:"E-wallet",
       icon:<RxDashboard/>,
-      link:"https://www.youtube.com/watch?v=j5a0jTc9S10"
+      link:"/"
     }
     ,
     {
