@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jwtauthentication',
     'rest_framework',
     'rest_framework_simplejwt',
     'django.contrib.admin',
