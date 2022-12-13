@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'jwtauthentication',
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders', # CORS
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', #CORS
+    'django.middleware.common.CommonMiddleware' #CORS
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -167,3 +170,9 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:3030',
+    'http://localhost:8000'
+]
