@@ -7,20 +7,26 @@ function Register()
 const [username,setUsername] = useState("");
 const [password,setPassword] = useState("");
 
-const handleRegister = () =>{
+const handleRegister = async (e) =>{
+      e.preventDefault();
 
       const data = {
         "username":username,
         "password":password
       }  
+      console.log(data)
 
-      fetch('http://127.0.0.1:8000/auth/register',{
+      const response = await fetch('http://127.0.0.1:8000/auth/register',{
         method:'POST',
         headers:{
           'Content-Type': 'application/json',
         },
         body:JSON.stringify(data)
       })
+
+      const data2 = await response.json();
+
+      console.log(data2);
 
 }
 
@@ -34,7 +40,7 @@ const handleRegister = () =>{
         </h1>
         <hr className='mt-3'></hr>
         <div className='mt-3'>
-          <label for='username' className='block text-base mb-2'>Username</label>
+          <label for='username' className='block text-base mb-2'>{username}</label>
           <input type='text' id='username' onChange={(e)=>setUsername(e.target.value)} className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Username'></input>
         </div>
         <div className='mt-3'>
