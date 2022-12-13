@@ -26,3 +26,14 @@ function Regster() {
 }
 
 export default Regster
+
+
+Register.getLayout = function PageLayout(page){
+
+  return (
+      <>
+          {page}
+      </>
+  )
+
+}
