@@ -15,6 +15,11 @@ const handleLogin = async (e)=>{
     console.log(username,password);
     try {
       const response = await axios.post('/auth/token', data)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('refresh-token', response.data.refresh)
+        localStorage.setItem('access-token', response.data.access)
+      }
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.access
       console.log(response.data)
     } catch (error) {
       console.log(error)

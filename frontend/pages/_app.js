@@ -8,8 +8,8 @@ function MyApp({ Component, pageProps }) {
   //   return Component.getLayout(  <Component {...pageProps} />   )
   // }
   return (
-  <Layout>
-      <Component {...pageProps} />
+    <Layout>
+        <Component {...pageProps} />
     </Layout>
   )
 }
