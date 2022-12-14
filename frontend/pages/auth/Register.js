@@ -1,33 +1,36 @@
-import axios from 'axios';
 import React, { useState } from 'react'
+import axios from 'axios';
 
 
 function Register() 
 {
 
-const [username,setUsername] = useState("");
-const [password,setPassword] = useState("");
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
 
-const handleRegister = async (e) =>{
-      e.preventDefault();
+  const handleRegister = async (e) =>{
+        e.preventDefault();
 
-      const data = {
-        "username":username,
-        "password":password
-      }  
-      console.log(data)
+        const data = {
+          "username":username,
+          "password":password
+        }  
+        console.log(data)
 
-      try {
-        const response = await axios.post('/auth/register', data)
-        console.log(response.data)
-      } catch (error) {
-        console.log(error)
-      }
+        try {
+          const response = await axios.post('/auth/register', data)
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('refresh-token', response.data.refresh)
+            localStorage.setItem('access-token', response.data.access)
+          }
+          axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.access
+          console.log(response.data)
+        } catch (error) {
+          console.log(error)
+        }
 
-}
-
-
-
+  }
+  
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <form className='w-96 p-6 shadow-lg rounded-md bg-white'>

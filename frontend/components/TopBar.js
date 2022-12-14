@@ -1,6 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 
 function TopBar() {
+  const [username, setUsername] = useState("")
+  
+  useEffect(() => {
+    const getUsername = async () => {
+      try {
+        const response = await axios.get('/auth/getuser')
+        setUsername(response.data.username)
+      } catch (error) {
+        console.log(error)
+        setUsername("Not logged in")
+      }
+    }
+
+    getUsername()
+  }, [])
+  
   return (
     <div className='w-[80vw]'>
         <div className="text-left shadow-md flex items-center rounded-sm p-2">
@@ -18,7 +35,7 @@ function TopBar() {
             <div></div>
             <div></div>
             <div className='flex'>
-              <div className='text-[#707184] tracking-tighter font-bold text-[0.8rem] '>Kirtan Kunwar</div>
+              <div className='text-[#707184] tracking-tighter font-bold text-[0.8rem] '>{username}</div>
               <div></div>
             </div>
             <div></div>

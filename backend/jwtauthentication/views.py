@@ -29,3 +29,9 @@ class RegisterApi(APIView):
             'refresh': str(refresh),
             'access': str(refresh.access_token)
         }, status=status.HTTP_201_CREATED)
+
+class GetUserApi(APIView):
+    def get(self, request: Request) -> Response:
+        user: User = request.user
+
+        return Response({'username': user.get_username()}, status=status.HTTP_200_OK)
