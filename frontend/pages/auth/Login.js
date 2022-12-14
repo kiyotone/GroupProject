@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 function Login() 
 {
@@ -8,20 +9,17 @@ function Login()
 const handleLogin = async (e)=>{
     e.preventDefault();
     const data = {
-      "username":username,
-      "password":password
+      username: username,
+      password: password
     }  
     console.log(username,password);
-    const response = await fetch('http://127.0.0.1:8000/auth/token',{
-        method:'POST',
-        headers:{
-          'Content-Type': 'application/json',
-        },
-        body:JSON.stringify(data)
-      })
-      
-      const details = await response.json();
-      console.log(details)
+    try {
+      const response = await axios.post('/auth/token', data)
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+    
 }
 
   return (
@@ -32,15 +30,15 @@ const handleLogin = async (e)=>{
         </h1>
         <hr className='mt-3'></hr>
         <div className='mt-3'>
-          <label for='username' className='block text-base mb-2'>Username</label>
-          <input type='text' onChange={(e)=>setUsername(e.target.value)} id='username' className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Username'></input>
+          <label htmlFor='username' className='block text-base mb-2'>Username</label>
+          <input type='text' onChange={(e)=>setUsername(e.target.value)} id='username' className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' name='username' placeholder='Enter Username'></input>
         </div>
         <div className='mt-3'>
-          <label for='password'  className='block text-base mb-2'>Password</label>
-          <input type='password' onChange={(e)=>setPassword(e.target.value)} id='password' className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Password'></input>
+          <label htmlFor='password'  className='block text-base mb-2'>Password</label>
+          <input type='password' onChange={(e)=>setPassword(e.target.value)} id='password' className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' name='password' placeholder='Enter Password'></input>
         </div>
 
-        <button className='mt-3 rounded-full w-40 h-10 bg-[#734bf9] mb-2' value="Register" onClick={handleLogin}>Register</button>
+        <button className='mt-3 rounded-full w-40 h-10 bg-[#734bf9] mb-2' value="Register" onClick={handleLogin}>Login</button>
       </form>
     </div>
   )

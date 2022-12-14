@@ -22,7 +22,7 @@ class RegisterApi(APIView):
             user = User.objects.create_user(username=username, password=password)
             user.save()
         except IntegrityError:
-           return Response({'detail': 'User already exists'}, status=status.HTTP_400_BAD_REQUEST)
+           return Response({'detail': 'User already exists'}, status=status.HTTP_409_CONFLICT)
 
         refresh = RefreshToken.for_user(user)
         return Response({

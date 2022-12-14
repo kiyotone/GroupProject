@@ -49,7 +49,7 @@ const Navbar=()=> {
 
             <div className="flex flex-col items-center">
               <div className="flex items-center mt-3">
-                <Image src={logo} className="w-[60px] h-[60px]"/>
+                <Image priority alt='logo' src={logo} className="w-[60px] h-[60px]"/>
                 <div className="text-black font-bold text-xl">Company</div>
               </div>
          
@@ -59,7 +59,7 @@ const Navbar=()=> {
               
               buttons.map((element)=>
               (
-                <NavContents name={element.name} icon ={element.icon} link={element.link} router={router}/>
+                <NavContents key={element.name} name={element.name} icon ={element.icon} link={element.link} router={router}/>
               )
               )
             

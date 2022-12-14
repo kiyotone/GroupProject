@@ -1,6 +1,6 @@
 # Backend
 
-## Create and activate python virtual environment
+## Create and activate python virtual environment(Linux)
 
 ```bash
 python3 -m venv .venv

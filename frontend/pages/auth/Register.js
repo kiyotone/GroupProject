@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 
 
@@ -16,17 +17,12 @@ const handleRegister = async (e) =>{
       }  
       console.log(data)
 
-      const response = await fetch('http://127.0.0.1:8000/auth/register',{
-        method:'POST',
-        headers:{
-          'Content-Type': 'application/json',
-        },
-        body:JSON.stringify(data)
-      })
-
-      const data2 = await response.json();
-
-      console.log(data2);
+      try {
+        const response = await axios.post('/auth/register', data)
+        console.log(response.data)
+      } catch (error) {
+        console.log(error)
+      }
 
 }
 
@@ -40,15 +36,15 @@ const handleRegister = async (e) =>{
         </h1>
         <hr className='mt-3'></hr>
         <div className='mt-3'>
-          <label for='username' className='block text-base mb-2'>{username}</label>
+          <label htmlFor='username' className='block text-base mb-2'>Username</label>
           <input type='text' id='username' onChange={(e)=>setUsername(e.target.value)} className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Username'></input>
         </div>
         <div className='mt-3'>
-          <label for='password' className='block text-base mb-2'>Password</label>
+          <label htmlFor='password' className='block text-base mb-2'>Password</label>
           <input type='password' id='password' onChange={(e)=>setPassword(e.target.value)} className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Password'></input>
         </div>
         <div className='mt-3'>
-          <label for='passwordConfirmation' className='block text-base mb-2'>Password Confirmation</label>
+          <label htmlFor='passwordConfirmation' className='block text-base mb-2'>Password Confirmation</label>
           <input type='password' id='passwordConfirmation' className='border w-full text-base px-2 py-1 focus:outline-none focus:rind-0 focus:border-gray-600 bg-white' placeholder='Enter Password Again'></input>
         </div>
         <div className='mt-3 h-10 flex justify-center w-full items-center'>
