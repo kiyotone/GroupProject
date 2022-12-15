@@ -13,26 +13,27 @@ function Register()
   const [password,setPassword] = useState("");
 
   const handleRegister = async (e) =>{
-        e.preventDefault();
+    e.preventDefault();
+    const uninterceptedAxiosInstance = axios.create()
 
-        const data = {
-          "username":username,
-          "password":password
-        }  
-        console.log(data)
+    const data = {
+      "username":username,
+      "password":password
+    }  
+    console.log(data)
 
-        try {
-          const response = await axios.post('/auth/register', data)
-          if (typeof window !== 'undefined') {
-            localStorage.setItem('refresh-token', response.data.refresh)
-            localStorage.setItem('access-token', response.data.access)
-          }
-          axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.access
-          console.log(response.data)
-        } catch (error) {
-          console.log(error)
-        }
-        router.push('/Dashboard')
+    try {
+      const response = await uninterceptedAxiosInstance.post('/auth/register', data)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('refresh-token', response.data.refresh)
+        localStorage.setItem('access-token', response.data.access)
+      }
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.access
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+    router.push('/Dashboard')
 
   }
   

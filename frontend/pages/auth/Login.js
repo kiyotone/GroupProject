@@ -7,7 +7,7 @@ function Login()
 {
 
   const errorSimpllifier = {
-    "No active account found with the given credentials": "Invalid Username or Password"
+    401: "Invalid Username or Password"
   }
 
   const router = useRouter();
@@ -17,7 +17,8 @@ function Login()
   const [password,setPassword] = useState("");
   const [error,changeError] = useState("");
 
-const handleLogin = async (e)=>{
+  const handleLogin = async (e)=>{
+    const uninterceptedAxiosInstance = axios.create()
     e.preventDefault();
     const data = {
       username: username,
@@ -25,7 +26,7 @@ const handleLogin = async (e)=>{
     }  
     console.log(username,password);
     try {
-      const response = await axios.post('/auth/token', data)
+      const response = await uninterceptedAxiosInstance.post('/auth/token', data)
       if (typeof window !== 'undefined') {
         localStorage.setItem('refresh-token', response.data.refresh)
         localStorage.setItem('access-token', response.data.access)
@@ -37,10 +38,10 @@ const handleLogin = async (e)=>{
 
     } catch (error) {
       console.log(error)
-      // changeError(errorSimpllifier[error.response.data.detail])
+      changeError(errorSimpllifier[error.response.status])
     }
-    
-}
+      
+  }
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">

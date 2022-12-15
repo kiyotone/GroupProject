@@ -54,7 +54,7 @@ function TopBar() {
             
            </div>
            
-             <Image alt='image' src={hane} className="w-[40px] border- cursor-pointer rounded-full h-[40px]"/>           
+             <Image alt='profile' src={hane} className="w-[40px] border- cursor-pointer rounded-full h-[40px]"/>           
            
            </div>
       
