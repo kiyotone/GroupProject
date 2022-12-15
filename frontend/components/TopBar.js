@@ -3,8 +3,12 @@ import axios from 'axios'
 import hane from '../assets/hane.png'
 import Image from 'next/image'
 import {AiFillCaretDown} from 'react-icons/ai'
+import { useRouter } from 'next/router'
+import { useCurrentState } from './CurrentState'
 
 function TopBar() {
+  const router = useRouter();
+  const {currentState} = useCurrentState();
   const [username, setUsername] = useState("")
    
   useEffect(() => {
@@ -13,8 +17,11 @@ function TopBar() {
         const response = await axios.get('/auth/getuser')
         setUsername(response.data.username)
       } catch (error) {
-        console.log(error)
         setUsername("Not logged in")
+        
+        if(currentState == "notLoggedIn" & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
+          router.push("/auth/Login")
+        }
       }
     }
 

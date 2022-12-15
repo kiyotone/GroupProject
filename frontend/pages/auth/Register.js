@@ -11,19 +11,10 @@ function Register()
 
   const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
-  const [username,setUsername] = useState("");
-  const [password,setPassword] = useState("");
 
   const handleRegister = async (e) =>{
         e.preventDefault();
-  const handleRegister = async (e) =>{
-        e.preventDefault();
 
-        const data = {
-          "username":username,
-          "password":password
-        }  
-        console.log(data)
         const data = {
           "username":username,
           "password":password
@@ -45,7 +36,7 @@ function Register()
 
   }
   
-  }
+  
   
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">

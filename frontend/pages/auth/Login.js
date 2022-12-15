@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router';
+import { useCurrentState } from '../../components/CurrentState';
 
 function Login() 
 {
@@ -10,6 +11,7 @@ function Login()
   }
 
   const router = useRouter();
+  const {changeCurrentState} = useCurrentState()
 
   const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
@@ -30,9 +32,12 @@ const handleLogin = async (e)=>{
       }
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.access
       console.log(response.data)
+      changeCurrentState("loggedIn")
       router.push('/Dashboard')
+
     } catch (error) {
-      changeError(errorSimpllifier[error.response.data.detail])
+      console.log(error)
+      // changeError(errorSimpllifier[error.response.data.detail])
     }
     
 }
