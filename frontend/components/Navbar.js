@@ -3,7 +3,6 @@ import logo from '../assets/logo.png'
 import Image from 'next/image'
 import {RxDashboard} from 'react-icons/rx'
 import NavContents from './NavContents'
-import  Link  from 'next/link'
 import {useRouter} from 'next/router'
 
 const Navbar=()=> {

@@ -1,10 +1,19 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useRouter } from 'next/router';
 
 function Login() 
 {
+
+  const errorSimpllifier = {
+    "No active account found with the given credentials": "Invalid Username or Password"
+  }
+
+  const router = useRouter();
+
   const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
+  const [error,changeError] = useState("");
 
 const handleLogin = async (e)=>{
     e.preventDefault();
@@ -21,8 +30,9 @@ const handleLogin = async (e)=>{
       }
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.access
       console.log(response.data)
+      router.push('/Dashboard')
     } catch (error) {
-      console.log(error)
+      changeError(errorSimpllifier[error.response.data.detail])
     }
     
 }
@@ -33,6 +43,7 @@ const handleLogin = async (e)=>{
         <h1 className='text-3xl block text-center font-semibold'>
           Login
         </h1>
+        <div className={`${!error && "hidden"} text-red-600 `}>{error}</div>
         <hr className='mt-3'></hr>
         <div className='mt-3'>
           <label htmlFor='username' className='block text-base mb-2'>Username</label>
@@ -44,6 +55,7 @@ const handleLogin = async (e)=>{
         </div>
 
         <button className='mt-3 rounded-full w-40 h-10 bg-[#734bf9] mb-2' value="Register" onClick={handleLogin}>Login</button>
+
       </form>
     </div>
   )

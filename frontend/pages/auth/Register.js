@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router';
 import axios from 'axios';
+
 
 
 function Register() 
 {
+  
+  const router = useRouter();
 
   const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
@@ -28,6 +32,7 @@ function Register()
         } catch (error) {
           console.log(error)
         }
+        router.push('/Dashboard')
 
   }
   
