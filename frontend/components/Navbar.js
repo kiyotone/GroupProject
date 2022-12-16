@@ -42,12 +42,19 @@ const Navbar=()=> {
       link:"/Logout"
     }
     
+    
   ]
+
+  const goHome= ()=>{
+      if (router.asPath!= '/'){
+        router.push('/')
+      }
+  }
   return (
     <div className="bg-[#E4E8F0] h-screen w-[300px] flex flex-col">
 
-            <div className="flex flex-col items-center">
-              <div className="flex items-center mt-3">
+            <div className="flex flex-col items-center" >
+              <div className="flex items-center mt-3 cursor-pointer" onClick={goHome}>
                 <Image priority alt='logo' src={logo} className="w-[60px] h-[60px]"/>
                 <div className="text-black font-bold text-xl">Company</div>
               </div>

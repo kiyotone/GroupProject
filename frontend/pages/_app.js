@@ -6,7 +6,7 @@ import { ProvideCurrentState } from '../components/CurrentState'
 
 function MyApp({ Component, pageProps }) {
   // if (Component.getLayout){
-  //   return Component.getLayout(  <Component {...pageProps} />   )
+  //   return Component.getLayout(   <ProvideCurrentState><Component {...pageProps} /> </ProvideCurrentState>  )
   // }
   return (
     <ProvideCurrentState>
