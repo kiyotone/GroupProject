@@ -5,19 +5,24 @@ import Image from 'next/image'
 import {AiFillCaretDown} from 'react-icons/ai'
 import { useRouter } from 'next/router'
 import { useCurrentState } from './CurrentState'
+import { useCurrentUser } from './CurrentUser'
+import { MdNotifications } from 'react-icons/md'
+import { RiMessage3Fill } from "react-icons/ri";
+import {FiSearch} from "react-icons/fi"
 
 function TopBar() {
   const router = useRouter();
   const {currentState} = useCurrentState();
-  const [username, setUsername] = useState("")
+  const {USERNAME,CHANGE_USER} = useCurrentUser();
    
   useEffect(() => {
     const getUsername = async () => {
       try {
         const response = await axios.get('/auth/getuser')
-        setUsername(response.data.username)
+        
+        CHANGE_USER(response.data.username)
       } catch (error) {
-        setUsername("Not logged in")
+        CHANGE_USER("notLoggedIn")
         
         if(currentState == "notLoggedIn" & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
           router.push("/auth/Login")
@@ -31,28 +36,34 @@ function TopBar() {
   return (
     <div className='w-[80vw] flex items-center justify-between shadow-md'>
         
-          <div className="text-left flex items-center rounded-sm p-2">
+          <div className="text-left flex items-center rounded-sm m-2">
             <div className='ml-2 flex flex-col text-zinc-800 mb-1'>
             <div className='text-xl font-bold'>Good Morning</div>
             <div className=' text-[0.6rem] tracking-wide text-[#b8b8b8] font-bold'>Here's your overview this week</div>
             </div>
 
-            <div className='ml-11'>
+            <div className='ml-11 flex relative'>
               <input type='text' className='rounded-full bg-[#f5f5f5] pl-12 items-center w-72 placeholder:text-sm placeholder:text-zinc-600 text-zinc-600' placeholder='| Search time, days...'></input>
+              <FiSearch className="absolute text-[#858585] mt-[0.33rem] ml-[1.4rem]"/>
             </div>
 
        
           </div>
           {/* RIGHT */}
 
-          <div className='flex items-center gap-3 mr-4'>
-           
-           <div className='flex text-[#cfcfcf] items-center'>
+          <div className='flex justify-between items-center h-full m-2 gap-5 mr-4 text-lg'>
+ 
+            <div className="flex text-[#b2afba] gap-1 text-[1.4rem]">
+              <MdNotifications className="cursor-pointer"/>
+              <RiMessage3Fill className="cursor-pointer"/>
+            </div>
 
-              <div className='text-lg tracking-tighter font-bold text-[0.8rem] cursor-pointer'>{username}</div>
-              <AiFillCaretDown className='w-2 h-2' />
+           <div className='flex h-full text-[#7b7c8c] gap-2 items-center'>
+
             
-           </div>
+              <div className='tracking-tighter text-[1.2rem]  flex items-center font-bold cursor-pointer'>{USERNAME}</div>
+             <AiFillCaretDown className='text-[0.6rem] ' />
+              </div>
            
              <Image alt='profile' src={hane} className="w-[40px] border- cursor-pointer rounded-full h-[40px]"/>           
            

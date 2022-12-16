@@ -44,8 +44,8 @@ function Login()
   }
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100 text-black">
-      <form className='w-96 p-6 shadow-lg rounded-md bg-white'>
+    <div className="flex justify-center items-center h-screen  text-black">
+      <form className='w-96 p-6 shadow-lg rounded-md bg-gray-100'>
         <h1 className='text-3xl block text-center font-semibold'>
           Login
         </h1>

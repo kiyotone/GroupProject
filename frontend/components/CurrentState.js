@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState } from 'react'
+import CurrentUser, { ProvideCurrentUser } from './CurrentUser';
 
 const stateContext = createContext()
 
 export function ProvideCurrentState({children}) {
     const state = useProvideCurrentState();
     return (
-    <stateContext.Provider value={state}> {children} </stateContext.Provider>
+    <stateContext.Provider value={state}><ProvideCurrentUser>{children} </ProvideCurrentUser> </stateContext.Provider>
   )
 }
 

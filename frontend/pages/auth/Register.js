@@ -40,8 +40,8 @@ function Register()
   
   
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form className='w-96 p-6 shadow-lg rounded-md bg-white'>
+    <div className="flex justify-center items-center h-screen ">
+      <form className='w-96 p-6 shadow-lg rounded-md bg-gray-100'>
         <h1 className='text-3xl block text-center font-semibold'>
           Register
         </h1>
