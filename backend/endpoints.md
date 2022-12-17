@@ -165,7 +165,7 @@
 * **Success Response**
 
     * **Code:** 201 Created <br />
-    **Content:** `{title: <title>, content: <content>}`
+    **Content:** `{id: <post-id>}`
 
 * **Error Response**
     
@@ -177,3 +177,31 @@
 ---
 
 ## **Get Posts**
+
+* **URL**
+
+    /posts/getposts
+
+* **Method:**
+    
+    `GET`
+
+* **Data Params**
+    
+    `start=[integer]`[default=0]
+
+* **Required Headers**
+
+    `Authorization: Bearer <access-token>`
+
+* **Success Response**
+
+    * **Code:** 200 <br />
+    **Content:** `{"posts": [{"id": <post-id>,"title": <title>, "content": <content>, "author": <post-author>, "created_at": <post-creation-date>}, ...]}`
+
+* **Error Response**
+
+    * **Code:** 400 Bad Request <br />
+    **Content:** `{"detail": "Invalid data parameters"}`
+
+    * **Code:** 401 Unauthorized <br />
