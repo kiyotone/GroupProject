@@ -140,3 +140,40 @@
 * **Error Response**
 
     * **Code:** 401 Unauthorized <br />
+
+---
+
+## **Add Post**
+
+* **URL**
+
+    /posts/add
+
+* **Method:**
+    
+    `POST`
+
+* **Data Params**
+    
+    `title=[string]` <br />
+    `content=[string]`
+
+* **Required Headers:**
+
+    `Authorization: Bearer <access-token>`
+
+* **Success Response**
+
+    * **Code:** 201 Created <br />
+    **Content:** `{title: <title>, content: <content>}`
+
+* **Error Response**
+    
+    * **Code:** 400 Bad Request <br />
+    **Content:** `{"title": ["this field is required"], "content": ["this field is required"]}`
+
+    * **Code:** 401 Unauthorized <br />
+
+---
+
+## **Get Posts**

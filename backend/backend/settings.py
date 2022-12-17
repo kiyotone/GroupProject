@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jwtauthentication',
+    'posts',
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders', # CORS
