@@ -17,6 +17,12 @@ class RegisterApi(APIView):
         username = data['username']
         password = data['password']
 
+        if not username or not password:
+            return Response({
+                "username": ["This field is required"],
+                "password": ["This field is required"]
+            }, status=status.HTTP_400_BAD_REQUEST)
+
         # Attempt to create a new user
         try:
             user = User.objects.create_user(username=username, password=password)

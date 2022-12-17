@@ -140,3 +140,68 @@
 * **Error Response**
 
     * **Code:** 401 Unauthorized <br />
+
+---
+
+## **Add Post**
+
+* **URL**
+
+    /posts/add
+
+* **Method:**
+    
+    `POST`
+
+* **Data Params**
+    
+    `title=[string]` <br />
+    `content=[string]`
+
+* **Required Headers:**
+
+    `Authorization: Bearer <access-token>`
+
+* **Success Response**
+
+    * **Code:** 201 Created <br />
+    **Content:** `{id: <post-id>}`
+
+* **Error Response**
+    
+    * **Code:** 400 Bad Request <br />
+    **Content:** `{"title": ["this field is required"], "content": ["this field is required"]}`
+
+    * **Code:** 401 Unauthorized <br />
+
+---
+
+## **Get Posts**
+
+* **URL**
+
+    /posts/getposts
+
+* **Method:**
+    
+    `GET`
+
+* **Data Params**
+    
+    `start=[integer]`[default=0]
+
+* **Required Headers**
+
+    `Authorization: Bearer <access-token>`
+
+* **Success Response**
+
+    * **Code:** 200 <br />
+    **Content:** `{"posts": [{"id": <post-id>,"title": <title>, "content": <content>, "author": <post-author>, "created_at": <post-creation-date>}, ...]}`
+
+* **Error Response**
+
+    * **Code:** 400 Bad Request <br />
+    **Content:** `{"detail": "Invalid data parameters"}`
+
+    * **Code:** 401 Unauthorized <br />
