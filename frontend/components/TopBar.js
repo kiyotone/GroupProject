@@ -14,24 +14,25 @@ function TopBar() {
   const router = useRouter();
   const {currentState} = useCurrentState();
   const {USERNAME,CHANGE_USER} = useCurrentUser();
-   
-  useEffect(() => {
-    const getUsername = async () => {
-      try {
-        const response = await axios.get('/auth/getuser')
-        
-        CHANGE_USER(response.data.username)
-      } catch (error) {
-        CHANGE_USER("notLoggedIn")
-        
-        if(currentState == "notLoggedIn" & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
-          router.push("/auth/Login")
-        }
+  
+  const getUsername = async () => {
+    try {
+      const response = await axios.get('/auth/getuser')
+      
+      CHANGE_USER(response.data.username)
+    } catch (error) {
+      CHANGE_USER("notLoggedIn")
+      
+      if(currentState == "notLoggedIn" & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
+        router.push("/auth/Login")
       }
     }
+  }
 
+  useEffect( () => {
+    
     getUsername()
-  })
+  },[])
   
   return (
     <div className='w-[80vw] flex items-center justify-between shadow-md'>

@@ -12,6 +12,8 @@ export function ProvideCurrentUser({children}) {
 
 }
 
+
+
 export function useCurrentUser(){
     return useContext(userContext);
 }
@@ -25,7 +27,9 @@ function useProvideCurrentUser(){
 
     return {
         USERNAME,
-        CHANGE_USER
+        CHANGE_USER,
+        
+        
     }
 
 }
