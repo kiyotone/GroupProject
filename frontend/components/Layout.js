@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import TopBar from './TopBar'
-
+import Footer from './Footer'
 function Layout({children}) {
 
   return (
@@ -10,9 +10,10 @@ function Layout({children}) {
         <div className=''>
           
           <TopBar/>
-          <div className='w-full h-full text-black'>
+          <div className='w-full h-2/5 text-black'>
           {children}
         </div>
+        <Footer/>
         </div>
         
     </div>
