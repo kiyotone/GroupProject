@@ -6,7 +6,7 @@ function Layout({children}) {
 
   return (
     <div className="flex ">
-        <Navbar />
+        <Navbar className="absolute"/>
         <div className=''>
           
           <TopBar/>

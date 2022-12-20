@@ -53,12 +53,11 @@ function Dashboard() {
 
         <div className="bg-red text-center justify-center flex-col items-center text-black">
                 
-        <Posts key={"post.id"} id={"post.id"} title={"post.title"} content={"post.content"} created_at={"post.created_at"} author={"post.author"}/>
-                {/* {posts && posts.map((post)=>(
+                {posts && posts.map((post)=>(
                   <Posts key={post.id} id={post.id} title={post.title} content={post.content} created_at={post.created_at} author={post.author}/>
                 )
                 )
-                } */}
+                }
         </div>
 
 
