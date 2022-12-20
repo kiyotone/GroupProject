@@ -51,7 +51,7 @@ const Navbar=()=> {
       }
   }
   return (
-    <div className="bg-[#E4E8F0] h-screen w-[300px] flex flex-col  ">
+    <div className="bg-[#E4E8F0]  h-screen w-[300px] flex flex-col">
 
             <div className="flex flex-col items-center" >
               <div className="flex items-center mt-3 cursor-pointer" onClick={goHome}>

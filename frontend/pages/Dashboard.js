@@ -51,7 +51,7 @@ function Dashboard() {
 
       </div>
 
-        <div className="bg-red text-center justify-center flex-col items-center text-black">
+        <div className="bg-red text-center flex flex-col items-center text-black">
                 
                 {posts && posts.map((post)=>(
                   <Posts key={post.id} id={post.id} title={post.title} content={post.content} created_at={post.created_at} author={post.author}/>
