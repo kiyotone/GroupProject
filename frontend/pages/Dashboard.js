@@ -46,14 +46,19 @@ function Dashboard() {
 
   return (
     <div className="w-100 h-full">
+      <div className="bg-gray-500"> 
+      
+
+      </div>
 
         <div className="bg-red text-center justify-center flex-col items-center text-black">
                 
-                {posts && posts.map((post)=>(
+        <Posts key={"post.id"} id={"post.id"} title={"post.title"} content={"post.content"} created_at={"post.created_at"} author={"post.author"}/>
+                {/* {posts && posts.map((post)=>(
                   <Posts key={post.id} id={post.id} title={post.title} content={post.content} created_at={post.created_at} author={post.author}/>
                 )
                 )
-                }
+                } */}
         </div>
 
 

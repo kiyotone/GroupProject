@@ -5,6 +5,7 @@ function Posts({id,title,content,created_at,author}) {
 
 
   return (
+    <div className='justify-center'>
     <div className='mt-4 ml-4 rounded-xl flex-col items-start bg-gray-200 w-[40em]  drop-shadow-2xl'>
 
             <div className='flex text-lg font-bold items-start ml-5'>{author}</div>
@@ -14,6 +15,7 @@ function Posts({id,title,content,created_at,author}) {
             </div>
 
             <div className='bg-white rounded-md '>REACTIONS BAR....</div>
+    </div>
     </div>
   )
 }
