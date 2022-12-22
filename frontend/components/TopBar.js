@@ -10,6 +10,7 @@ import { useCurrentUser } from './CurrentUser'
 import { MdNotifications } from 'react-icons/md'
 import { RiMessage3Fill } from "react-icons/ri";
 import {FiSearch} from "react-icons/fi"
+import ImageDropdown from './ImageDropdown'
 
 function TopBar() {
   const router = useRouter();
@@ -86,8 +87,9 @@ function TopBar() {
               <div className='tracking-tighter text-[1.2rem]  flex items-center font-bold cursor-pointer'>{USERNAME}</div>
             
             </div>
-           
-             <Image alt='profile' src={hane} className="w-[40px] border- cursor-pointer rounded-full h-[40px]"/>           
+
+              <ImageDropdown image={hane} />
+             
            
            </div>
       

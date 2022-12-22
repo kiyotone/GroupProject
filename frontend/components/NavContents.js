@@ -12,6 +12,7 @@ function NavContents({name,icon,link,router}) {
           <div className="flex ml-2 items-center">
             <div className={`${isActive && "bg-[#734BF9] rounded-full text-white border-[10px] border-[#734BF9]"}`}>{icon}</div>
             <div className={`${isActive && "text-[#734BF9]" } ml-6`}>{name}</div>
+            
           </div>  
 
         </div>
