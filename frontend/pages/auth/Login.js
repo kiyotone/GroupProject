@@ -6,6 +6,7 @@ import logo from "../../assets/logo.png";
 import Image from "next/image";
 
 function Login() {
+  
   const errorSimpllifier = {
     401: "Invalid Username or Password",
   };

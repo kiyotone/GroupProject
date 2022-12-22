@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import '@fontsource/roboto';
 
 function Home() {
   return (
