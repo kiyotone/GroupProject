@@ -136,7 +136,7 @@ function Login() {
         </div>
       </div>
 
-      {registerVisible && <Register registry={manageRegistryVisibility} />}
+      <Register registry={manageRegistryVisibility} className="transition-all animate-bounce ease-out" />
     </div>
   );
 }

@@ -14,26 +14,6 @@ const Navbar = () => {
       link: "/Dashboard",
     },
     {
-      name: "Login",
-      icon: <RxDashboard />,
-      link: "/auth/Login",
-    },
-    {
-      name: "Register",
-      icon: <RxDashboard />,
-      link: "/auth/Register",
-    },
-    {
-      name: "E-wallet",
-      icon: <RxDashboard />,
-      link: "/wallet",
-    },
-    {
-      name: "ProfileManagement",
-      icon: <RxDashboard />,
-      link: "https://www.youtube.com/watch?v=j5a0jTc9S10",
-    },
-    {
       name: "Logout",
       icon: <RxDashboard />,
       link: "/Logout",
