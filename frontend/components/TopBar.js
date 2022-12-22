@@ -3,38 +3,48 @@ import axios from 'axios'
 import hane from '../assets/hane.png'
 import Image from 'next/image'
 import {AiFillCaretDown} from 'react-icons/ai'
+import {BsMoon,BsSun, BsToggle2On} from 'react-icons/bs';
 import { useRouter } from 'next/router'
 import { useCurrentState } from './CurrentState'
 import { useCurrentUser } from './CurrentUser'
 import { MdNotifications } from 'react-icons/md'
 import { RiMessage3Fill } from "react-icons/ri";
 import {FiSearch} from "react-icons/fi"
+import ImageDropdown from './ImageDropdown'
 
 function TopBar() {
   const router = useRouter();
   const {currentState} = useCurrentState();
   const {USERNAME,CHANGE_USER} = useCurrentUser();
-   
-  useEffect(() => {
-    const getUsername = async () => {
-      try {
-        const response = await axios.get('/auth/getuser')
-        
-        CHANGE_USER(response.data.username)
-      } catch (error) {
-        CHANGE_USER("notLoggedIn")
-        
-        if(currentState == "notLoggedIn" & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
-          router.push("/auth/Login")
-        }
+  const [isOpen,changeOpen] = useState(false);
+
+  const toggleDark = ()=>{
+
+    isOpen ? changeOpen(false):changeOpen(true)
+
+  }
+
+  const getUsername = async () => {
+    try {
+      const response = await axios.get('/auth/getuser')
+      
+      CHANGE_USER(response.data.username)
+    } catch (error) {
+      CHANGE_USER("notLoggedIn")
+      
+      if(currentState == "notLoggedIn" & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
+        router.push("/auth/Login")
       }
     }
+  }
 
+  useEffect( () => {
+    
     getUsername()
-  })
+  },[])
   
   return (
-    <div className='w-[80vw] flex items-center justify-between shadow-md'>
+    <div className='w-[80vw] bg-white flex items-center justify-between shadow-md'>
         
           <div className="text-left flex items-center rounded-sm m-2">
             <div className='ml-2 flex flex-col text-zinc-800 mb-1'>
@@ -50,10 +60,23 @@ function TopBar() {
        
           </div>
           {/* RIGHT */}
+          
 
           <div className='flex justify-between items-center h-full m-2 gap-5 mr-4 text-lg'>
- 
+
+          {isOpen ? <div className="text-purple-700 relative flex items-center cursor-pointer" onClick={toggleDark}>
+              
+              <BsToggle2On className="h-12 w-12" />
+              <BsMoon className="absolute text-white right-[.3rem]" />
+          </div>
+          :
+          <div className="text-purple-700 relative flex items-center cursor-pointer" onClick={toggleDark}>
+                <BsToggle2On className="h-12 w-12 rotate-180" />
+                <BsSun className="absolute text-white left-[.45rem]" />          
+            </div>
+          }
             <div className="flex text-[#b2afba] gap-1 text-[1.4rem]">
+      
               <MdNotifications className="cursor-pointer"/>
               <RiMessage3Fill className="cursor-pointer"/>
             </div>
@@ -62,10 +85,11 @@ function TopBar() {
 
             
               <div className='tracking-tighter text-[1.2rem]  flex items-center font-bold cursor-pointer'>{USERNAME}</div>
-             <AiFillCaretDown className='text-[0.6rem] ' />
-              </div>
-           
-             <Image alt='profile' src={hane} className="w-[40px] border- cursor-pointer rounded-full h-[40px]"/>           
+            
+            </div>
+
+              <ImageDropdown image={hane} />
+             
            
            </div>
       
