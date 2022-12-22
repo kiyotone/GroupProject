@@ -120,7 +120,8 @@ function Login() {
               <div
                 className="text-[#734bf9] cursor-pointer"
                 id="create-account"
-              >
+                onClick={()=>router.push("/auth/Register")}
+                >
                 Create an account
               </div>
             </div>
