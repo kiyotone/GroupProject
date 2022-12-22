@@ -1,20 +1,24 @@
-import '../styles/globals.css'
-import Layout from '../components/Layout'
-import '../styles/signin.css'
-import '../components/axios'
-import { ProvideCurrentState } from '../components/CurrentState'
+import "../styles/globals.css";
+import Layout from "../components/Layout";
+import "../styles/signin.css";
+import "../components/axios";
+import { ProvideCurrentState } from "../components/CurrentState";
 
 function MyApp({ Component, pageProps }) {
-  // if (Component.getLayout){
-  //   return Component.getLayout(   <ProvideCurrentState><Component {...pageProps} /> </ProvideCurrentState>  )
-  // }
+  if (Component.getLayout) {
+    return Component.getLayout(
+      <ProvideCurrentState>
+        <Component {...pageProps} />{" "}
+      </ProvideCurrentState>
+    );
+  }
   return (
     <ProvideCurrentState>
-    <Layout>
+      <Layout>
         <Component {...pageProps} />
-    </Layout>
+      </Layout>
     </ProvideCurrentState>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
