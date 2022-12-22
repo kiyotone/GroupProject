@@ -3,7 +3,6 @@ import Layout from "../components/Layout";
 import "../styles/signin.css";
 import "../components/axios";
 import { ProvideCurrentState } from "../components/CurrentState";
-import '@fontsource/roboto';
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
