@@ -1,5 +1,12 @@
 # Backend
 
+## Create and activate python virtual environment(Windows)
+
+```bash
+python -m venv .venv
+.venv/script/activate
+```
+
 ## Create and activate python virtual environment(Linux)
 
 ```bash
