@@ -1,14 +1,11 @@
 import axios from 'axios'
-import { useRouter } from 'next/router'
 import jwt_decode from 'jwt-decode'
-import { useEffect } from 'react'
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 if (typeof window !== 'undefined') {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access-token')
 }
-
 
 axios.interceptors.request.use((config) => {
     if (typeof window !== 'undefined') {

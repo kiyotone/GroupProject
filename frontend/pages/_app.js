@@ -2,23 +2,18 @@ import "../styles/globals.css";
 import Layout from "../components/Layout";
 import "../styles/signin.css";
 import "../components/axios";
-import { ProvideCurrentState } from "../components/CurrentState";
 import '@fontsource/roboto';
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
     return Component.getLayout(
-      <ProvideCurrentState>
-        <Component {...pageProps} />{" "}
-      </ProvideCurrentState>
+      <Component {...pageProps} />
     );
   }
   return (
-    <ProvideCurrentState>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ProvideCurrentState>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 

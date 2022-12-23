@@ -5,18 +5,23 @@ import Image from 'next/image'
 import {AiFillCaretDown} from 'react-icons/ai'
 import {BsMoon,BsSun, BsToggle2On} from 'react-icons/bs';
 import { useRouter } from 'next/router'
-import { useCurrentState } from './CurrentState'
-import { useCurrentUser } from './CurrentUser'
 import { MdNotifications } from 'react-icons/md'
 import { RiMessage3Fill } from "react-icons/ri";
 import {FiSearch} from "react-icons/fi"
 import ImageDropdown from './ImageDropdown'
 
+import useAuthStore from '../store/authStore'
+
 function TopBar() {
   const router = useRouter();
-  const {currentState} = useCurrentState();
-  const {USERNAME,CHANGE_USER} = useCurrentUser();
   const [isOpen,changeOpen] = useState(false);
+
+  const {user, setUser} = useAuthStore(
+    (state) => ({
+      user: state.user,
+      setUser: state.setuser
+    })
+  )
 
   const toggleDark = ()=>{
 
@@ -28,11 +33,11 @@ function TopBar() {
     try {
       const response = await axios.get('/auth/getuser')
       
-      CHANGE_USER(response.data.username)
+      setUser({
+        username: response.data.username
+      })
     } catch (error) {
-      CHANGE_USER("notLoggedIn")
-      
-      if(currentState == "notLoggedIn" & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
+      if(user === null & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
         router.push("/auth/Login")
       }
     }
@@ -84,7 +89,7 @@ function TopBar() {
            <div className='flex h-full text-[#7b7c8c] gap-2 items-center'>
 
             
-              <div className='tracking-tighter text-[1.2rem]  flex items-center font-bold cursor-pointer'>{USERNAME}</div>
+              <div className='tracking-tighter text-[1.2rem]  flex items-center font-bold cursor-pointer'>{user ? user.username : "Not logged in"}</div>
             
             </div>
 
