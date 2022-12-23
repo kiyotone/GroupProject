@@ -12,12 +12,9 @@ axios.interceptors.request.use((config) => {
 
         const refreshIt = async (config) => {
             const uninterceptedAxiosInstance = axios.create()
-            const data = {
-                "refresh": localStorage.getItem('refresh-token')
-            }
 
             try {
-                const response = await uninterceptedAxiosInstance.post('/auth/token/refresh', data)
+                const response = await uninterceptedAxiosInstance.post('/auth/token/refresh')
                 localStorage.setItem('access-token', response.data.access)
                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.access
                 config.headers.Authorization = 'Bearer ' + response.data.access

@@ -10,8 +10,8 @@ const authStore = (set) => ({
     setAccessToken: (accessToken) => {
         set((state) => ({ accessToken: accessToken }))
     },
-    setRefreshToken: (refreshToken) => {
-        set((state) => ({ refreshToken: refreshToken }))
+    setTokens: (accessToken, refreshToken) => {
+        set((state) => ({ accessToken: accessToken, refreshToken: refreshToken }))
     },
     logOut: () => {
         set((state) => ({ user: null, accessToken: null, refreshToken: null }))

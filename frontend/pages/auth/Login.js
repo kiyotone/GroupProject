@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useCurrentState } from "../../components/CurrentState";
 import logo from "../../assets/logo.png";
 import Image from "next/image";
 
@@ -14,7 +13,6 @@ function Login() {
   };
 
   const router = useRouter();
-  const { changeCurrentState } = useCurrentState();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -35,13 +33,11 @@ function Login() {
         data
       );
       if (typeof window !== "undefined") {
-        localStorage.setItem("refresh-token", response.data.refresh);
         localStorage.setItem("access-token", response.data.access);
       }
       axios.defaults.headers.common["Authorization"] =
         "Bearer " + response.data.access;
       console.log(response.data);
-      changeCurrentState("loggedIn");
       router.push("/Dashboard");
     } catch (error) {
       console.log(error);
