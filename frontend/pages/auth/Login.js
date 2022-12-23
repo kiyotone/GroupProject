@@ -10,6 +10,7 @@ import Register from "./Register";
 function Login() {
   const errorSimpllifier = {
     401: "Invalid Username or Password",
+    500: "Server error"
   };
 
   const router = useRouter();
