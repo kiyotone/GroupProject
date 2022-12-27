@@ -17,10 +17,10 @@ function Layout({children}) {
         <div className='ml-[300px] w-full mt-20 flex flex-col'>          
           
         
-            <div className='w-full h-2/5 text-black'>
+            <div className=' text-black'>
             {children}
             </div>
-            <div className='w-full pt-20'>
+            <div className=''>
             <Footer/>
             </div>
         </div>
