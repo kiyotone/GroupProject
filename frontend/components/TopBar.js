@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, use} from 'react'
 import axios from 'axios'
 import hane from '../assets/hane.png'
 import {BsMoon,BsSun, BsToggle2On} from 'react-icons/bs';
 import { useRouter } from 'next/router'
-import { useCurrentState } from './CurrentState'
-import { useCurrentUser } from './CurrentUser'
 import { MdNotifications } from 'react-icons/md'
 import { RiMessage3Fill } from "react-icons/ri";
 import {FiSearch} from "react-icons/fi"
@@ -16,6 +14,8 @@ function TopBar() {
   const router = useRouter();
   
   const user = useSelector((state)=> state.user);
+
+  console.log(user)
   
   const site = useSelector((state)=> state.siteState);
   const dispatch = useDispatch();
@@ -80,7 +80,7 @@ function TopBar() {
            <div className='flex h-full text-[#7b7c8c] gap-2 items-center'>
 
             
-              <div className='tracking-tighter text-[1.2rem]  flex items-center font-bold cursor-pointer'>{USERNAME}</div>
+              <div className='tracking-tighter text-[1.2rem]  flex items-center font-bold cursor-pointer'>{user.username}</div>
             
             </div>
 

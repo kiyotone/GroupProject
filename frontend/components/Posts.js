@@ -23,25 +23,25 @@ function Posts({id,title,content,created_at,author}) {
               <span className='pt-[1.2rem]'>{author}</span></div>
             
             <div className='ml-10 mt-5 mb-5'>
-            <div className='text-bold text-sm flex items-start border-b-2 border-black'>{content}</div>
+            <div className='text-bold text-sm flex items-start border-b-2  border-black'>{content}</div>
           </div>
           <Swiper    modules={[Pagination]}
     pagination={true} className='  h-[50vh]  } '>
   
             <SwiperSlide>
-            <img  src  ="./images/Burger.png" className='object-fill '></img>
+            <img  src  ="./images/Burger.png" className='object-fill w-full h-full'></img>
           
             </SwiperSlide>
             <SwiperSlide>
-            <img  src  ="./images/momos.png" className=''></img>
+            <img  src  ="./images/momos.png" className='w-full h-full'></img>
           
             </SwiperSlide>
             <SwiperSlide>
-            <img  src  ="./images/Burger.png" className=''></img>
+            <img  src  ="./images/Burger.png" className='w-full h-full'></img>
           
             </SwiperSlide>
             <SwiperSlide>
-            <img  src  ="./images/Burger.png" className=''></img>
+            <img  src  ="./images/Burger.png" className='w-full h-full'></img>
           
             </SwiperSlide>
             </Swiper>
