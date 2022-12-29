@@ -116,6 +116,7 @@ function Register(props) {
             <button
               className="mt-3 rounded-full w-40 h-10 bg-[#734bf9] mb-2 hover:bg-[#814cff]"
               value="Register"
+              onClick={handleRegister}
             >
               Register
             </button>

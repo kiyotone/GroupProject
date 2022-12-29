@@ -17,6 +17,8 @@ class RegisterApi(APIView):
         data = request.data
         username = data['username']
         password = data['password']
+        
+
 
         if not username or not password:
             return Response({

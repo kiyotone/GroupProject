@@ -1,29 +1,28 @@
 import React, { useEffect, useState ,useReducer } from 'react'
 import Posts from '../components/Posts'
 import axios from 'axios'
-
+import FormControl from '@mui/material/FormControl'
+import Input from '@mui/material/Input'
+import Image from 'next/image'
+import hane from '../assets/hane.png'
+import { InputAdornment, InputLabel, TextField } from '@mui/material'
+import ImageIcon from '@mui/icons-material/Image';
 
 function Dashboard() {
 
     const [posts,setPosts] = useState([])
-//   const postsReducer = (state,action) =>{
-//     switch (action.type){
-//         case "SET_POSTS":
-//             return {
-//                 posts : action.payload
-//             }
-//         case "CRETAE_POSTS":
-//             return {
-//                 posts: [action.payload,...state.posts ]
-//             }
-//             default:
-//                 return state
-//     }
-// }
-  
-//   const [posts ,dispatch] = useReducer(postsReducer,
-//     [])
+    
+    useEffect(()=>{
+      window.addEventListener('keyup',(e)=>{
+        e.target.style.height = "auto";
+        let scHeight = e.target.scrollHeight;
+        console.log(scHeight);
+        e.target.style.height = `${scHeight}px`;
+        });
+    
+    },[])
 
+    
 
   const getUserPosts = async (start = 0) => {
     const data = {
@@ -45,9 +44,37 @@ function Dashboard() {
     }, [])
 
   return (
-    <div className="w-100 h-full">
-      <div className="bg-gray-500"> 
-      
+    <div className="w-100 h-full flex flex-col items-center">
+      <div className="bg-zinc-200 rounded-3xl text-zinc-900 w-[50rem] flex flex-col"> 
+        
+        {/* 
+          <InputLabel >CreatePost</InputLabel>
+          <Input className='rounded-full ' variant="outlined" id="create-post" startAdornment={
+            <Image src={hane} className='w-[30px] h-[30px] rounded-full'></Image>
+          }></Input>           
+        */}
+
+            <div className='flex mt-5 space-x-2 ml-3 items-center'>
+            <Image src={hane} className='w-[40px] h-[40px] rounded-full'/>
+
+            <textarea style={{"height":"40px"}} className={`rounded-3xl p-2 max-h-[330px] w-[45rem] text-white placeholder:text-white `} placeholderw-='areaheightCreate  Post' type='text'>
+
+            </textarea>
+            </div>
+            <hr className="mt-3 bg-red-700"></hr>
+
+            <div className='mt-5 text-xl justify-between flex ml-5 mb-3'>
+                <div className='p-2 cursor-pointer flex items-center hover:bg-gray-500 rounded-2xl'>
+                <ImageIcon sx={{fontSize:50}}/>
+                <div className='text-[15px] font-bold'>Photo/Video</div>
+                </div>
+                <div className='flex rounded-2xl cursor-pointer items-center text-white bg-red-400 hover:bg-red-700'>
+                  <div className=''>Post =</div>
+                </div>
+              <div/>
+          
+          </div>
+        
 
       </div>
 
