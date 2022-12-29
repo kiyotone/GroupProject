@@ -16,14 +16,14 @@ const Footer = () => {
 
   
   </div>
-  <div className='h-86 w-3/5 z-10 relative bg-white left-52 bottom-64 border-black-300  shadow-2xl rounded-xl' >
-<div>
-<p  className=" text-blue-600 font-bold  text-3xl text-center ">HTML CSS</p>
+  <div className='h-[40vh] w-3/5 z-10 relative  bg-white left-52 bottom-64 border-black-300  shadow-2xl rounded-[12px]' >
+<div className='pt-[1.8rem] font-bold'>
+<p  className=" text-blue-600 font-bold  text-3xl text-center  ">HTML CSS</p>
        <p  className=" text-gray-700 font-bold  text-3xl text-center">RESPONSIVE FOOTER </p>
        <p className=" text-gray-700 font-bold  text-3xl text-center">DESIGN</p>
       
 </div>
-<div className=' pl-2 pt-3 flex  gap-4 bg-gray-200 text-black '>
+<div className=' pt-[3rem] flex absolute h-[20vh] w-full top-[10rem] gap-5 bg-gray-200 text-black  pl-[3rem] font-semibold'>
 <div className='sec1'>
           <p>Webdevtrick.com</p>
           <p>BLOG. TOOLS. CONTACT</p>

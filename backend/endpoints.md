@@ -205,3 +205,35 @@
     **Content:** `{"detail": "Invalid data parameters"}`
 
     * **Code:** 401 Unauthorized <br />
+
+## **Follow and Unfollow**
+
+* **URL**
+
+    /follow/`<username: string>`
+
+* **Method**
+
+    `PUT`, `DELETE`
+
+* **Required Headers**
+
+    `Authorization: Bearer <access-token>`
+
+* **Success Response**
+
+    * **Code:** 202 Accepted
+
+* **Error Response**
+
+    * **Code:** 401 Unauthorized <br />
+
+    * **Code:** 409 Conflict <br />
+    **Content:** `{"detail": "User not found"}`
+
+    * **Code:** 409 Conflict <br />
+    **Content:** `{"detail": "Already following"}`
+
+    * **Code:** 409 Conflict <br />
+    **Content:** `{"detail": "Not following"}`
+
