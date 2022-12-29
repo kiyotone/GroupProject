@@ -1,11 +1,8 @@
 import React, { useEffect, useState ,useReducer } from 'react'
 import Posts from '../components/Posts'
 import axios from 'axios'
-import FormControl from '@mui/material/FormControl'
-import Input from '@mui/material/Input'
 import Image from 'next/image'
 import hane from '../assets/hane.png'
-import { InputAdornment, InputLabel, TextField } from '@mui/material'
 import ImageIcon from '@mui/icons-material/Image';
 
 function Dashboard() {

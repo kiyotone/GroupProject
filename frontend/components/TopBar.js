@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import hane from '../assets/hane.png'
-import Image from 'next/image'
-import {AiFillCaretDown} from 'react-icons/ai'
 import {BsMoon,BsSun, BsToggle2On} from 'react-icons/bs';
 import { useRouter } from 'next/router'
 import { useCurrentState } from './CurrentState'
@@ -11,18 +9,16 @@ import { MdNotifications } from 'react-icons/md'
 import { RiMessage3Fill } from "react-icons/ri";
 import {FiSearch} from "react-icons/fi"
 import ImageDropdown from './ImageDropdown'
+import {useSelector,useDispatch} from 'react-redux'
+import { toggleMode,toggleLoggedIn } from './redux/features/siteStateSlice'
 
 function TopBar() {
   const router = useRouter();
-  const {currentState} = useCurrentState();
-  const {USERNAME,CHANGE_USER} = useCurrentUser();
-  const [isOpen,changeOpen] = useState(false);
-
-  const toggleDark = ()=>{
-
-    isOpen ? changeOpen(false):changeOpen(true)
-
-  }
+  
+  const user = useSelector((state)=> state.user);
+  
+  const site = useSelector((state)=> state.siteState);
+  const dispatch = useDispatch();
 
   const getUsername = async () => {
     try {
@@ -30,9 +26,9 @@ function TopBar() {
       
       CHANGE_USER(response.data.username)
     } catch (error) {
-      CHANGE_USER("notLoggedIn")
+      toggleLoggedIn()
       
-      if(currentState == "notLoggedIn" & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
+      if(site.logged_in == true & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
         router.push("/auth/Login")
       }
     }
@@ -49,7 +45,7 @@ function TopBar() {
           <div className="text-left flex items-center rounded-sm m-2">
             <div className='ml-2 flex flex-col text-zinc-800 mb-1'>
             <div className='text-xl font-bold'>Good Morning</div>
-            <div className=' text-[0.6rem] tracking-wide text-[#b8b8b8] font-bold'>Here's your overview this week</div>
+            <div className=' text-[0.6rem] tracking-wide text-[#b8b8b8] font-bold'>Here's your {site.mode} this week</div>
             </div>
 
             <div className='ml-11 flex relative'>
@@ -64,13 +60,13 @@ function TopBar() {
 
           <div className='flex justify-between items-center h-full m-2 gap-5 mr-4 text-lg'>
 
-          {isOpen ? <div className="text-purple-700 relative flex items-center cursor-pointer" onClick={toggleDark}>
+          {site.mode=="dark" ? <div className="text-purple-700 relative flex items-center cursor-pointer" onClick={()=>dispatch(toggleMode())}>
               
               <BsToggle2On className="h-12 w-12" />
               <BsMoon className="absolute text-white right-[.3rem]" />
           </div>
           :
-          <div className="text-purple-700 relative flex items-center cursor-pointer" onClick={toggleDark}>
+          <div className="text-purple-700 relative flex items-center cursor-pointer" onClick={()=>dispatch(toggleMode())}>
                 <BsToggle2On className="h-12 w-12 rotate-180" />
                 <BsSun className="absolute text-white left-[.45rem]" />          
             </div>

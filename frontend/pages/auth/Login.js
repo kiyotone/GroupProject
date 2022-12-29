@@ -40,7 +40,8 @@ function Login() {
       axios.defaults.headers.common["Authorization"] =
         "Bearer " + response.data.access;
       console.log(response.data);
-      changeCurrentState("loggedIn");
+  
+      
       router.push("/Dashboard");
     } catch (error) {
       console.log(error);
