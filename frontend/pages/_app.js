@@ -7,6 +7,7 @@ import '@fontsource/roboto';
 import {store} from '../components/redux/store'
 import { Provider } from "react-redux";
 
+/*
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
     return Component.getLayout(
@@ -29,6 +30,16 @@ function MyApp({ Component, pageProps }) {
       </Layout>
       </Provider>
     </ProvideCurrentState>
+  );
+}*/
+
+function MyApp({ Component, pageProps}) {
+  if (Coomponent.getLayout) {
+    return Component.getLayout(<Component {...pageProps} />);
+  }
+
+  return (
+    <Component {...pageProps} />
   );
 }
 

@@ -9,7 +9,7 @@ if (typeof window !== 'undefined') {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access-token')
 }
 
-
+/*
 axios.interceptors.request.use((config) => {
     if (typeof window !== 'undefined') {
 
@@ -41,4 +41,4 @@ axios.interceptors.request.use((config) => {
 }, (error) => {
     Router.push('/auth/login')
     Promise.reject(error)
-})
+})*/
