@@ -5,6 +5,7 @@ import Image from 'next/image'
 import hane from '../assets/hane.png'
 import ImageIcon from '@mui/icons-material/Image';
 
+/*
 function Dashboard() {
 
     const [posts,setPosts] = useState([])
@@ -43,13 +44,6 @@ function Dashboard() {
   return (
     <div className="w-100 h-full flex flex-col items-center">
       <div className="bg-zinc-200 rounded-3xl text-zinc-900 w-[50rem] flex flex-col"> 
-        
-        {/* 
-          <InputLabel >CreatePost</InputLabel>
-          <Input className='rounded-full ' variant="outlined" id="create-post" startAdornment={
-            <Image src={hane} className='w-[30px] h-[30px] rounded-full'></Image>
-          }></Input>           
-        */}
 
             <div className='flex mt-5 space-x-2 ml-3 items-center'>
             <Image src={hane} className='w-[40px] h-[40px] rounded-full'/>
@@ -86,6 +80,24 @@ function Dashboard() {
 
 
     </div>
+  )
+}*/
+
+const Dashboard = () => {
+
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const getUser = async () => {
+      const response = await axios.get('/auth/getuser');
+      setUsername(response.data.username);
+    }
+
+    getUser()
+  }, []);
+
+  return (
+    <div className='text-black'>{username}</div>
   )
 }
 

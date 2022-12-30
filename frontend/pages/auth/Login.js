@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useCurrentState } from "../../components/CurrentState";
 import logo from "../../assets/logo.png";
 import Image from "next/image";
+import useAuthStore from "../../store/authStore";
 
 import Register from "./Register";
 
@@ -12,8 +12,9 @@ function Login() {
     401: "Invalid Username or Password",
   };
 
+  const { setTokens } = useAuthStore();
+
   const router = useRouter();
-  const { changeCurrentState } = useCurrentState();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,14 +34,7 @@ function Login() {
         "/auth/token",
         data
       );
-      if (typeof window !== "undefined") {
-        localStorage.setItem("refresh-token", response.data.refresh);
-        localStorage.setItem("access-token", response.data.access);
-      }
-      axios.defaults.headers.common["Authorization"] =
-        "Bearer " + response.data.access;
-      console.log(response.data);
-  
+      setTokens(response.data.access, response.data.refresh)
       
       router.push("/Dashboard");
     } catch (error) {

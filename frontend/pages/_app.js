@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }) {
 }*/
 
 function MyApp({ Component, pageProps}) {
-  if (Coomponent.getLayout) {
+  if (Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />);
   }
 
