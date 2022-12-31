@@ -1,9 +1,10 @@
 import React, { useEffect, useState ,useReducer } from 'react'
 import Posts from '../components/Posts'
-import axios from 'axios'
 import Image from 'next/image'
 import hane from '../assets/hane.png'
 import ImageIcon from '@mui/icons-material/Image';
+
+import useAxiosPrivate from '../store/hooks/useAxiosPrivate';
 
 /*
 function Dashboard() {
@@ -86,6 +87,7 @@ function Dashboard() {
 const Dashboard = () => {
 
   const [username, setUsername] = useState('');
+  const axios = useAxiosPrivate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -93,6 +95,7 @@ const Dashboard = () => {
       setUsername(response.data.username);
     }
 
+    console.log('i am running for some reason');
     getUser()
   }, []);
 
