@@ -10,8 +10,8 @@ export const userSlicer = createSlice({
     initialState,
     reducers : {
         changeUser : (state,action)=>{
-            state.username = action.username
-            state.gender = action.gender
+            state.username = action.payload.username
+            state.gender = action.payload.gender
         }
     }
 });

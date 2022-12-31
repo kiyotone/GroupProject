@@ -9,22 +9,26 @@ import {FiSearch} from "react-icons/fi"
 import ImageDropdown from './ImageDropdown'
 import {useSelector,useDispatch} from 'react-redux'
 import { toggleMode,toggleLoggedIn } from './redux/features/siteStateSlice'
+import { changeUser } from './redux/features/userSlicer';
 
 function TopBar() {
   const router = useRouter();
   
   const user = useSelector((state)=> state.user);
 
-  console.log(user)
   
   const site = useSelector((state)=> state.siteState);
   const dispatch = useDispatch();
+
+  
 
   const getUsername = async () => {
     try {
       const response = await axios.get('/auth/getuser')
       
-      CHANGE_USER(response.data.username)
+      console.log(response.data)
+      dispatch(changeUser(response.data))
+
     } catch (error) {
       toggleLoggedIn()
       

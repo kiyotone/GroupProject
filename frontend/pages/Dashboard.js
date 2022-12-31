@@ -4,10 +4,17 @@ import axios from 'axios'
 import Image from 'next/image'
 import hane from '../assets/hane.png'
 import ImageIcon from '@mui/icons-material/Image';
+import { useSelector } from 'react-redux'
 
 function Dashboard() {
 
+  const user = useSelector((state)=>state.user)
+
     const [posts,setPosts] = useState([])
+    // const [newPost,setNewPost] = useState[{
+    //   author:user,
+    //   deta
+    // }]
     
     useEffect(()=>{
       window.addEventListener('keyup',(e)=>{
@@ -20,6 +27,9 @@ function Dashboard() {
     },[])
 
     
+  const addPost = () =>{
+    
+  }
 
   const getUserPosts = async (start = 0) => {
     const data = {
@@ -44,12 +54,6 @@ function Dashboard() {
     <div className="w-100 h-full flex flex-col items-center">
       <div className="bg-zinc-200 rounded-3xl text-zinc-900 w-[50rem] flex flex-col"> 
         
-        {/* 
-          <InputLabel >CreatePost</InputLabel>
-          <Input className='rounded-full ' variant="outlined" id="create-post" startAdornment={
-            <Image src={hane} className='w-[30px] h-[30px] rounded-full'></Image>
-          }></Input>           
-        */}
 
             <div className='flex mt-5 space-x-2 ml-3 items-center'>
             <Image src={hane} className='w-[40px] h-[40px] rounded-full'/>
