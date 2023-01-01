@@ -5,11 +5,11 @@ import {BsMoon,BsSun, BsToggle2On} from 'react-icons/bs';
 import { useRouter } from 'next/router'
 import { MdNotifications } from 'react-icons/md'
 import { RiMessage3Fill } from "react-icons/ri";
-import {FiSearch} from "react-icons/fi"
 import ImageDropdown from './ImageDropdown'
 import {useSelector,useDispatch} from 'react-redux'
 import { toggleMode,toggleLoggedIn } from './redux/features/siteStateSlice'
 import { changeUser } from './redux/features/userSlicer';
+import SearchBar from './SearchBar';
 
 function TopBar() {
   const router = useRouter();
@@ -19,8 +19,21 @@ function TopBar() {
   
   const site = useSelector((state)=> state.siteState);
   const dispatch = useDispatch();
+  const [user_list,update_user_list] = useState({})
 
-  
+  const getUserList = async ()=>{
+    try {
+      const response = await axios.get('/auth/listuser')
+      console.log(response.data)
+      update_user_list(response.data)
+    }
+    catch(error){
+      confirm.log("sadaaaaaaaaaaaaaaaaaaaa")
+      console.log(error)
+    }
+    
+  }
+
 
   const getUsername = async () => {
     try {
@@ -41,6 +54,7 @@ function TopBar() {
   useEffect( () => {
     
     getUsername()
+    getUserList()
   },[])
   
   return (
@@ -52,11 +66,7 @@ function TopBar() {
             <div className=' text-[0.6rem] tracking-wide text-[#b8b8b8] font-bold'>Here's your {site.mode} this week</div>
             </div>
 
-            <div className='ml-11 flex relative'>
-              <input type='text' className='rounded-full bg-[#f5f5f5] pl-12 items-center w-72 placeholder:text-sm placeholder:text-zinc-600 text-zinc-600' placeholder='| Search time, days...'></input>
-              <FiSearch className="absolute text-[#858585] mt-[0.33rem] ml-[1.4rem]"/>
-            </div>
-
+            <SearchBar user_list = {user_list}/>
        
           </div>
           {/* RIGHT */}

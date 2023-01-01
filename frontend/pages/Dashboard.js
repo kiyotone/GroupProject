@@ -24,7 +24,8 @@ function Dashboard() {
         e.target.style.height = `${scHeight}px`;
         });
     
-    },[])
+    }
+    ,[])
 
     
   const addPost = () =>{

@@ -11,6 +11,10 @@ class AddPostApi(APIView):
     """
     API endpoint that allows users to add a new post.
     """
+
+    authentication_classes = []
+    permission_classes = []
+
     def post(self, request : Request) -> Response:
         data = request.data
 
@@ -39,6 +43,10 @@ class GetPostsApi(APIView):
     """
     API endpoint that allows users to posts from database.
     """
+
+    authentication_classes = []
+    permission_classes = []
+    
     def get(self, request : Request) -> Response:
         """
         Gets first 10 posts after start

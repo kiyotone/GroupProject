@@ -40,6 +40,8 @@ class RegisterApi(APIView):
         }, status=status.HTTP_201_CREATED)
 
 class GetUserApi(APIView):
+    authentication_classes = []
+    permission_classes = []
     def get(self, request: Request) -> Response:
         user: User = request.user
 
