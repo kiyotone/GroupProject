@@ -1,13 +1,14 @@
 import React, { useEffect, useState ,useReducer } from 'react'
 import Posts from '../components/Posts'
-import axios from 'axios'
 import Image from 'next/image'
 import hane from '../assets/hane.png'
 import ImageIcon from '@mui/icons-material/Image';
 import { useSelector } from 'react-redux'
+import withAuth from '../components/withAuth'
+import useAxiosPrivate from '../components/useAxiosPrivate';
 
 function Dashboard() {
-
+  const axios = useAxiosPrivate();
   const user = useSelector((state)=>state.user)
 
     const [posts,setPosts] = useState([])
@@ -94,4 +95,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default withAuth(Dashboard)

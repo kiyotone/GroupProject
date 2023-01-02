@@ -3,13 +3,22 @@ import { useRouter } from 'next/router'
 import jwt_decode from 'jwt-decode'
 import { useEffect } from 'react'
 
+const baseURL = 'http://127.0.0.1:8000'
+
 axios.defaults.baseURL = 'http://127.0.0.1:8000'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 if (typeof window !== 'undefined') {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access-token')
 }
 
+export const axiosPrivate = axios.create({
+    baseURL: baseURL,
+    headers: {
+        'Content-Type': 'application/json',
+    }
+});
 
+/*  --- Very Scary Code ---
 axios.interceptors.request.use((config) => {
     if (typeof window !== 'undefined') {
 
@@ -41,4 +50,4 @@ axios.interceptors.request.use((config) => {
 }, (error) => {
     Router.push('/auth/login')
     Promise.reject(error)
-})
+})*/

@@ -1,5 +1,4 @@
 import React, {useState, useEffect, use} from 'react'
-import axios from 'axios'
 import hane from '../assets/hane.png'
 import {BsMoon,BsSun, BsToggle2On} from 'react-icons/bs';
 import { useRouter } from 'next/router'
@@ -11,7 +10,10 @@ import { toggleMode,toggleLoggedIn } from './redux/features/siteStateSlice'
 import { changeUser } from './redux/features/userSlicer';
 import SearchBar from './SearchBar';
 
+import useAxiosPrivate from './useAxiosPrivate';
+
 function TopBar() {
+  const axios = useAxiosPrivate();
   const router = useRouter();
   
   const user = useSelector((state)=> state.user);
@@ -36,25 +38,14 @@ function TopBar() {
 
 
   const getUsername = async () => {
-    try {
-      const response = await axios.get('/auth/getuser')
-      
-      console.log(response.data)
-      dispatch(changeUser(response.data))
-
-    } catch (error) {
-      toggleLoggedIn()
-      
-      if(site.logged_in == true & router.asPath != "/auth/Register" & router.asPath != "/auth/Login"){
-        router.push("/auth/Login")
-      }
-    }
+    const response = await axios.get('auth/getuser')
+    dispatch(changeUser(response.data.username, response.data.gender))
   }
 
   useEffect( () => {
     
     getUsername()
-    getUserList()
+    //getUserList()
   },[])
   
   return (

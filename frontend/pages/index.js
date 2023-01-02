@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import withAuth from '../components/withAuth'
 
 
 function Home() {
@@ -21,4 +22,4 @@ function Home() {
   )
 }
 
-export default Home
+export default withAuth(Home)
