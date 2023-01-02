@@ -9,6 +9,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import { toggleMode,toggleLoggedIn } from './redux/features/siteStateSlice'
 import { changeUser } from './redux/features/userSlicer';
 import SearchBar from './SearchBar';
+import withAuth from './withAuth';
 
 import useAxiosPrivate from './useAxiosPrivate';
 
@@ -98,4 +99,4 @@ function TopBar() {
   )
 }
 
-export default TopBar
+export default withAuth(TopBar);

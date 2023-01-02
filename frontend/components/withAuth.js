@@ -10,6 +10,7 @@ const withAuth = (WrappedComponent) => {
             
             const token = getToken();
             if (!token) {
+                console.log("redirected due to no token")
                 Router.push('/auth/Login');
             } else {
                 try {
@@ -24,11 +25,7 @@ const withAuth = (WrappedComponent) => {
             }
         }, []);
 
-        if(!isAuthenticated) {
-            return null;
-        }
-
-        return <WrappedComponent {...props} />
+        return isAuthenticated ? <WrappedComponent {...props} /> : null;
     }
 
     return Wrapper;

@@ -18,8 +18,8 @@ const useAxiosPrivate = () => {
         (error) => {
             if (error.response.status === 401) {
                 console.log('redirected to login because of 401 response')
-                Router.push("auth/Login");
-                Promise.reject(error);
+                Router.push("/auth/Login");
+                return Promise.reject(error);
             }
 
             return error;
