@@ -21,7 +21,7 @@ function TopBar() {
   
   const site = useSelector((state)=> state.siteState);
   const dispatch = useDispatch();
-  const [user_list,update_user_list] = useState({})
+  const [user_list,update_user_list] = useState([])
 
   const getUserList = async ()=>{
     try {
