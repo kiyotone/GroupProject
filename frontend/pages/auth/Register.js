@@ -39,7 +39,7 @@ function Register(props) {
   };
 
   return (
-    <div className="absolute top-0 p-5 h-full left-[50%] -translate-x-[50%] backdrop-blur-sm w-full">
+    <div className="absolute top-0 p-5 h-full left-[50%] -translate-x-[50%] backdrop-blur-sm w-full ease-in-out transition-all">
       <div className="justify-center items-center h-full text-zinc-200 mx-auto mt-4 max-w-[400px]   bg-gradient-to-br from-[#744cf9] to-[#cec0fd] rounded-lg p-2">
         <form className="w-96 p-6 shadow-full rounded-md ">
           <div className="flex justify-end">

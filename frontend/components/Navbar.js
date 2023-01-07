@@ -14,6 +14,11 @@ const Navbar = () => {
       link: "/Dashboard",
     },
     {
+      name: "Expense Tracker",
+      icon: <RxDashboard />,
+      link: "ExpenseTracker",
+    },
+    {
       name: "Logout",
       icon: <RxDashboard />,
       link: "/Logout",

@@ -3,9 +3,12 @@ import Layout from "../components/Layout";
 import "../styles/signin.css";
 import "../components/axios";
 import { ProvideCurrentState } from "../components/CurrentState";
+<<<<<<< Updated upstream
 import '@fontsource/roboto';
 import {store} from '../components/redux/store'
 import { Provider } from "react-redux";
+=======
+>>>>>>> Stashed changes
 
 function MyApp({ Component, pageProps }) {
   if (Component.getLayout) {
